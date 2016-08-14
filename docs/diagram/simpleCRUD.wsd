@@ -1,0 +1,135 @@
+@startuml
+scale 800 width
+title "实体创建"
+
+[-> Route:"entity/create"
+Route -> Controller:create
+note left
+POST:
+field
+for
+creation
+end note
+opt
+Controller -> Controller: fieldCheck
+Controller -> Model: checkUniqueField
+note left: "e.g. entity.selectByName"
+Controller <-- Model: entity|null
+end opt
+Controller -> Model:entity:insert
+Controller <- Model: entity_id
+Route <- Controller: create result
+note right:entity_id
+
+@enduml
+
+@startuml
+scale 800 width
+
+title "查询单个信息"
+
+[-> Route: "entity/info"
+Route -> Controller: getInfo
+note left
+GET:
+entity_id
+end note
+Controller -> Model: entity.load
+Controller <-- Model: entity | null
+Route <-- Controller: entity info
+note right
+field
+for 
+entity
+end note
+
+@enduml
+
+@startuml
+scale 800 width
+
+title "查询列表"
+
+[-> Route: "entity/list"
+Route -> Controller: getList
+note left
+GET:
+skip
+size
+. . .
+end note
+Controller -> Model: entity.paging
+Controller <-- Model: entitys | null
+Route <-- Controller: entity list
+note right
+list[
+field
+for 
+entity
+]
+count
+end note
+
+@enduml
+
+
+@startuml
+scale 800 width
+title 实体修改
+
+[-> Route: "entity/update"
+Route -> Controller: update
+note left
+POST:
+entity_id
+field
+for 
+update
+end note
+Controller -> Model: entity.load
+Controller <-- Model: entity | null
+opt
+Controller -> Controller: fieldCheck
+end opt
+Controller -> Model: entity.update
+Controller <-- Model: affect row count
+Route <-- Controller: update result
+
+@enduml
+@startuml
+scale 800 width
+title 实体状态修改
+
+[-> Route: "entity/manageStatus"
+Route -> Controller: manageStatus
+note left 
+POST:
+entity_id
+status(ENABLED | DISABLED)
+end note
+Controller -> Model: entity.load
+Controller <-- Model: entity | null
+Controller -> Controller: enable | disable
+note left: "if !empty(entity)"
+Route <-- Controller: manageStatus result
+
+@enduml
+
+@startuml
+scale 800 width
+title 实体删除
+
+[-> Route: "entity/delete"
+Route -> Controller: delete
+note left
+POST:
+entity_id
+end note
+Controller -> Model: entity.load
+Controller <-- Model: entity | null
+Controller -> Model: entity.delete
+note left: "if !empty(entity)"
+Controller <-- Model: affect row count
+Route <-- Controller: delete result
+
+@enduml

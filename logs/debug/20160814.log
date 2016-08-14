@@ -1,0 +1,10 @@
+2016-08-14 11:12:26	debug
+{"input":"{\n    \"entity_id\":12,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813_update\",\n    \"ref_id\":2\n}","output":{"return_code":200,"return_msg":"","data":[]},"cost":0.38840818405151}
+2016-08-14 11:12:59	debug
+{"input":"{\n    \"entity_id\":15,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813_update\",\n    \"ref_id\":2\n}","output":{"return_code":"x20001","return_msg":"entity id not found","data":[]},"cost":0.14765000343323}
+2016-08-14 11:14:06	debug
+{"input":"{\n    \"entity_id\":15,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813_update\",\n    \"ref_id\":2\n}","output":{"return_code":"x20001","return_msg":"entity id not found","data":[]},"cost":0.076274156570435}
+2016-08-14 11:20:01	debug
+{"input":"{\n    \"entity_id\":12,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813_update\",\n    \"ref_id\":2\n}","output":{"return_code":200,"return_msg":"","data":[]},"cost":0.068977117538452}
+2016-08-14 11:22:31	debug
+{"input":"{\n    \"entity_id\":12,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813_update\",\n    \"ref_id\":2\n}","output":{"return_code":200,"return_msg":"","data":[]},"cost":0.060367107391357}

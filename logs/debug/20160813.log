@@ -1,0 +1,58 @@
+2016-08-13 12:27:00	debug
+{"input":"","output":{"return_code":20003,"return_msg":"param [entity_id] cannot be null or empty","data":[]},"cost":0.00040292739868164}
+2016-08-13 12:27:34	debug
+{"input":"","output":{"return_code":20003,"return_msg":"param [entity_id] cannot be null or empty","data":[]},"cost":0.00045108795166016}
+2016-08-13 12:32:02	debug
+{"input":"entity_id=111","output":{"return_code":"x20002","return_msg":"entity not found","data":[]},"cost":0.05032205581665}
+2016-08-13 12:39:58	debug
+{"input":"entity_id=111","output":{"return_code":"x20001","return_msg":"entity id not found","data":[]},"cost":0.063116073608398}
+2016-08-13 12:42:00	debug
+{"input":"entity_id=111","output":{"return_code":"x20001","return_msg":"entity id not found","data":[]},"cost":0.11189699172974}
+2016-08-13 12:42:13	debug
+{"input":"","output":{"return_code":20002,"return_msg":"content-type[] is invalid","data":[]},"cost":8.2969665527344e-5}
+2016-08-13 12:42:42	debug
+{"input":"{\n    \n}","output":{"return_code":20003,"return_msg":"param [entity_name] cannot be null or empty","data":[]},"cost":0.00049996376037598}
+2016-08-13 12:43:18	debug
+{"input":"{\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813\"\n}","output":{"return_code":20003,"return_msg":"param [ref_id] cannot be null or empty","data":[]},"cost":0.00039911270141602}
+2016-08-13 12:43:27	debug
+{"input":"{\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813\",\n    \"ref_id\":1\n}","output":{"return_code":200,"return_msg":"","data":{"entity_id":11}},"cost":0.061730861663818}
+2016-08-13 12:46:14	debug
+{"input":"{\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813\",\n    \"ref_id\":1\n}","output":{"return_code":"x20001","return_msg":"authentication failed","data":[]},"cost":0.00054693222045898}
+2016-08-13 12:46:21	debug
+{"input":"entity_id=111","output":{"return_code":"x20002","return_msg":"entity id not found","data":[]},"cost":0.072972774505615}
+2016-08-13 12:50:20	debug
+{"input":"entity_id=111","output":{"return_code":"x20002","return_msg":"entity id not found","data":[]},"cost":0.19510793685913}
+2016-08-13 12:50:23	debug
+{"input":"{\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813\",\n    \"ref_id\":1\n}","output":{"return_code":"x20001","return_msg":"authentication failed","data":{"ticket":""}},"cost":0.00048398971557617}
+2016-08-13 12:51:27	debug
+{"input":"{\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813\",\n    \"ref_id\":1\n}","output":{"return_code":200,"return_msg":"","data":{"entity_id":12}},"cost":0.058759927749634}
+2016-08-13 12:51:32	debug
+{"input":"{\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813\",\n    \"ref_id\":1\n}","output":{"return_code":20003,"return_msg":"param [entity_id] cannot be null or empty","data":[]},"cost":0.00030088424682617}
+2016-08-13 12:51:47	debug
+{"input":"{\n    \"entity_id\":13,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813\",\n    \"ref_id\":1\n}","output":{"return_code":"x20000","return_msg":null,"data":"entity not found"},"cost":0.095518827438354}
+2016-08-13 12:52:16	debug
+{"input":"{\n    \"entity_id\":13,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813\",\n    \"ref_id\":1\n}","output":{"return_code":"x20002","return_msg":"entity id not found","data":[]},"cost":0.10047507286072}
+2016-08-13 13:30:33	debug
+{"input":"entity_id=111","output":{"return_code":"x20001","return_msg":"entity id not found","data":[]},"cost":0.046241998672485}
+2016-08-13 13:30:40	debug
+{"input":"entity_id=12","output":{"return_code":"x20001","return_msg":"entity id not found","data":[]},"cost":0.060505867004395}
+2016-08-13 13:30:44	debug
+{"input":"entity_id=11","output":{"return_code":"x20001","return_msg":"entity id not found","data":[]},"cost":0.05053186416626}
+2016-08-13 13:30:50	debug
+{"input":"entity_id=11","output":{"return_code":"x20001","return_msg":"entity id not found","data":[]},"cost":0.16013503074646}
+2016-08-13 13:35:54	debug
+{"input":"entity_id=11","output":{"return_code":200,"return_msg":"","data":{"id":11,"entity_name":"test_0813","entity_desc":"test_0813","ref_id":1,"status":"ENABLED","create_time":"2016-08-13 12:43:27","update_time":"2016-08-13 12:43:27"}},"cost":0.063809871673584}
+2016-08-13 13:36:07	debug
+{"input":"entity_id=11","output":{"return_code":200,"return_msg":"","data":{"id":11,"entity_name":"test_0813","entity_desc":"test_0813","ref_id":1,"status":"ENABLED","create_time":"2016-08-13 12:43:27","update_time":"2016-08-13 12:43:27","_cached":true}},"cost":0.0071408748626709}
+2016-08-13 13:36:14	debug
+{"input":"{\n    \"entity_id\":13,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813\",\n    \"ref_id\":1\n}","output":{"return_code":"x20001","return_msg":"entity id not found","data":[]},"cost":0.043864965438843}
+2016-08-13 13:36:25	debug
+{"input":"{\n    \"entity_id\":12,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813_update\",\n    \"ref_id\":2\n}","output":{"return_code":200,"return_msg":"","data":[]},"cost":0.064179182052612}
+2016-08-13 13:36:30	debug
+{"input":"entity_id=11","output":{"return_code":200,"return_msg":"","data":{"id":11,"entity_name":"test_0813","entity_desc":"test_0813","ref_id":1,"status":"ENABLED","create_time":"2016-08-13 12:43:27","update_time":"2016-08-13 12:43:27","_cached":true}},"cost":0.027776956558228}
+2016-08-13 13:36:34	debug
+{"input":"entity_id=12","output":{"return_code":200,"return_msg":"","data":{"id":12,"entity_name":"test_0813","entity_desc":"test_0813_update","ref_id":2,"status":"ENABLED","create_time":"2016-08-13 12:51:27","update_time":"2016-08-13 13:36:25"}},"cost":0.085541009902954}
+2016-08-13 13:38:26	debug
+{"input":"{\n    \"entity_id\":12,\n    \"entity_name\": \"test_0813\",\n    \"entity_desc\": \"test_0813_update\",\n    \"ref_id\":2\n}","output":{"return_code":200,"return_msg":"","data":[]},"cost":0.071752071380615}
+2016-08-13 13:38:30	debug
+{"input":"entity_id=12","output":{"return_code":200,"return_msg":"","data":{"id":12,"entity_name":"test_0813","entity_desc":"test_0813_update","ref_id":2,"status":"ENABLED","create_time":"2016-08-13 12:51:27","update_time":"2016-08-13 13:36:25","_cached":true}},"cost":0.0089170932769775}
