@@ -1,24 +1,16 @@
-<?php
+<?php  
+/**
+ * Route文件自动加载
+ * @author liwenlong
+ */
 
-require "r_entity.php";
+$files = glob(__DIR__ . '/r_*.php');
+if ($files === false) {
+    throw new RuntimeException("Route files not found");
+}
+foreach ($files as $file) {
+    require_once $file;
+}
+unset($file);
+unset($files);
 
-//Middleware：在接口主体执行的前后添加验证和统计功能
-$app->add(new Controller\Invoker());
-
-// Default
-$app->get("/", function ($request, $response, $args) {
-    return $response->write(PROJECT_NAME . '(' . PROJECT_OWNER . ')');
-});
-
-// Hello World
-$app->get("/hello/{name}", function ($request, $response, $args) {
-    return $response->write("Hello " . $args['name']);
-});
-
-//Throw Exception
-$app->get("/throw/exception",function($request,$response,$args) {
-    throw new Exception("Throw Exception Test", 1);
-});
-
-
-?>

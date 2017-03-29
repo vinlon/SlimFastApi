@@ -1,6 +1,6 @@
 @startuml
 scale 800 width
-title "实体创建"
+title "entity create"
 
 [-> Route:"entity/create"
 Route -> Controller:create

@@ -1,30 +1,55 @@
 <?php 
-/** DEBUG开关 **/
-define("DEBUG", false);
+/**
+ * 开发环境配置
+ */
 
-/** 是否开启日志 **/
-define("LOG_ENABLE", true);
+/**
+ * DEBUG开关
+ */
+define('DEBUG', true);
+
+/**
+ * MySQL服务器地址
+ */
+define('DBHOST', 'mysql');
+
+/**
+ * MySQL服务端口
+ */
+define('PORT', '3306');
+
+/**
+ * MySQL用户名
+ */
+define('DBUSER', 'test');
 
 
+/**
+ * MySQL密码
+ */
+define('DBPASSWORD', 'test');
 
+/**
+ * 数据库名称
+ */
+define('DBNAME', 'test');
 
+/**
+ * Redis服务器地址
+ */
+define('REDISHOSTNAME', 'redis');
 
-/** MySQL HOST **/
-define("DBHOST", "TBD");
-/** MySQL HOST PORT**/
-define("PORT", "3306");
-/** MySQL用户名 **/
-define("DBUSER", "TBD");
-/** MySQL密码 **/
-define("DBPASSWORD", "TBD");
-/** 数据库名称 **/
-define("DBNAME", "TBD");
+/**
+ * Redis服务端口
+ */
+define('REDISPORT', '6379');
 
-/** Redis HOST **/
-define("REDISHOSTNAME", "TBD");
-/** Redis PORT **/
-define("REDISPORT", "6379");
-/** Redis PASSWORD **/
-define("REDISPASSWORD", "TBD");
-/** Redis DB_INDEX **/
-define("DB_INDEX",0);
+/**
+ * Redis密码
+ */
+define('REDISPASSWORD', '61190413akk');
+
+/**
+ * Redis数据库索引
+ */
+define('DB_INDEX',0);

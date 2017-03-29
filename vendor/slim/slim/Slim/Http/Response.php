@@ -136,7 +136,6 @@ class Response extends Message implements ResponseInterface
     public function __clone()
     {
         $this->headers = clone $this->headers;
-        $this->body = clone $this->body;
     }
 
     /*******************************************************************************
@@ -273,12 +272,22 @@ class Response extends Message implements ResponseInterface
      * response to the client.
      *
      * @param  string|UriInterface $url    The redirect destination.
-     * @param  int                 $status The redirect HTTP status code.
+     * @param  int|null            $status The redirect HTTP status code.
      * @return self
      */
-    public function withRedirect($url, $status = 302)
+    public function withRedirect($url, $status = null)
     {
-        return $this->withStatus($status)->withHeader('Location', (string)$url);
+        $responseWithRedirect = $this->withHeader('Location', (string)$url);
+
+        if (is_null($status) && $this->getStatusCode() === 200) {
+            $status = 302;
+        }
+
+        if (!is_null($status)) {
+            return $responseWithRedirect->withStatus($status);
+        }
+
+        return $responseWithRedirect;
     }
 
     /**
@@ -295,7 +304,7 @@ class Response extends Message implements ResponseInterface
      * @throws \RuntimeException
      * @return self
      */
-    public function withJson($data, $status = 200, $encodingOptions = 0)
+    public function withJson($data, $status = null, $encodingOptions = 0)
     {
         $body = $this->getBody();
         $body->rewind();
@@ -306,7 +315,11 @@ class Response extends Message implements ResponseInterface
             throw new \RuntimeException(json_last_error_msg(), json_last_error());
         }
 
-        return $this->withStatus($status)->withHeader('Content-Type', 'application/json;charset=utf-8');
+        $responseWithJson = $this->withHeader('Content-Type', 'application/json;charset=utf-8');
+        if (isset($status)) {
+            return $responseWithJson->withStatus($status);
+        }
+        return $responseWithJson;
     }
 
     /**

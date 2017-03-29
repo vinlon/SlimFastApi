@@ -4,12 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitaf4e9d1cbccea3eaaa580d86f123f2fa
+class ComposerStaticInitc05afe9956509391a375a9d2d8f266cc
 {
     public static $files = array (
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        '778a87887745c593c28cbb502d34e6cf' => __DIR__ . '/../..' . '/base/config.php',
         '5a53be654e4f73848e0e2e995493897f' => __DIR__ . '/../..' . '/app/config.php',
-        '79a1fb2109e4afeb06f7adb37c17c4dd' => __DIR__ . '/../..' . '/app/error_config.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -17,8 +17,13 @@ class ComposerStaticInitaf4e9d1cbccea3eaaa580d86f123f2fa
         array (
             'Slim\\' => 5,
         ),
+        'R' => 
+        array (
+            'RedBeanPHP\\' => 11,
+        ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Predis\\' => 7,
         ),
@@ -40,6 +45,14 @@ class ComposerStaticInitaf4e9d1cbccea3eaaa580d86f123f2fa
         'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
+        ),
+        'RedBeanPHP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gabordemooij/redbean/RedBeanPHP',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
         'Psr\\Http\\Message\\' => 
         array (
@@ -66,10 +79,6 @@ class ComposerStaticInitaf4e9d1cbccea3eaaa580d86f123f2fa
     public static $prefixesPsr0 = array (
         'P' => 
         array (
-            'Psr\\Log\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/psr/log',
-            ),
             'Pimple' => 
             array (
                 0 => __DIR__ . '/..' . '/pimple/pimple/src',
@@ -85,66 +94,33 @@ class ComposerStaticInitaf4e9d1cbccea3eaaa580d86f123f2fa
     );
 
     public static $classMap = array (
-        'Controller\\BaseController' => __DIR__ . '/../..' . '/app/controller/c_base.php',
-        'Controller\\EntityController' => __DIR__ . '/../..' . '/app/controller/c_entity.php',
-        'Controller\\Invoker' => __DIR__ . '/../..' . '/app/controller/invoker.php',
-        'Model\\BaseModel' => __DIR__ . '/../..' . '/app/model/m_base.php',
-        'Model\\Entity' => __DIR__ . '/../..' . '/app/model/m_entity.php',
-        'R' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Adapter' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Adapter\\DBAdapter' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\AssociationManager' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\BeanCollection' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\BeanHelper' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\BeanHelper\\SimpleFacadeBeanHelper' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Cursor' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Cursor\\NullCursor' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Cursor\\PDOCursor' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Driver' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Driver\\RPDO' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\DuplicationManager' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Facade' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Finder' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\LabelMaker' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Logger' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Logger\\RDefault' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Logger\\RDefault\\Debug' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\OODB' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\OODBBean' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Observable' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Observer' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Plugin' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\QueryWriter' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\QueryWriter\\AQueryWriter' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\QueryWriter\\MySQL' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\QueryWriter\\PostgreSQL' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\QueryWriter\\SQLiteT' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\RedException' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\RedException\\SQL' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Repository' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Repository\\Fluid' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Repository\\Frozen' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\SimpleModel' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\SimpleModelHelper' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\TagManager' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\ToolBox' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Util\\ArrayTool' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Util\\DispenseHelper' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Util\\Dump' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Util\\MultiLoader' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBeanPHP\\Util\\Transaction' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'RedBean_SimpleModel' => __DIR__ . '/../..' . '/app/model/rb.php',
-        'Service\\ErrorHandler' => __DIR__ . '/../..' . '/app/service/error_handler.php',
-        'Service\\ServiceLog' => __DIR__ . '/../..' . '/app/service/service_log.php',
+        'Controller\\AppController' => __DIR__ . '/../..' . '/app/controller/c_app.php',
+        'Controller\\CustomError' => __DIR__ . '/../..' . '/app/controller/custom_error.php',
+        'Controller\\DemoController' => __DIR__ . '/../..' . '/app/controller/c_demo.php',
+        'DAO\\AppDAO' => __DIR__ . '/../..' . '/app/DAO/d_app.php',
+        'DAO\\EntityDAO' => __DIR__ . '/../..' . '/app/DAO/d_entity.php',
+        'Model\\AppModel' => __DIR__ . '/../..' . '/app/model/m_app.php',
+        'Model\\Demo' => __DIR__ . '/../..' . '/app/model/m_demo.php',
+        'Service\\AppService' => __DIR__ . '/../..' . '/app/service/s_app.php',
+        'Service\\AuthService' => __DIR__ . '/../..' . '/app/service/s_auth.php',
+        'Service\\IpService' => __DIR__ . '/../..' . '/app/service/s_ip.php',
+        'SlimFastAPI\\Base' => __DIR__ . '/../..' . '/base/b_base.php',
+        'SlimFastAPI\\BaseController' => __DIR__ . '/../..' . '/base/b_controller.php',
+        'SlimFastAPI\\BaseDAO' => __DIR__ . '/../..' . '/base/b_DAO.php',
+        'SlimFastAPI\\BaseModel' => __DIR__ . '/../..' . '/base/b_model.php',
+        'SlimFastAPI\\BaseService' => __DIR__ . '/../..' . '/base/b_service.php',
+        'SlimFastAPI\\GlobalError' => __DIR__ . '/../..' . '/base/global_error.php',
+        'SlimFastAPI\\Invoker' => __DIR__ . '/../..' . '/base/invoker.php',
+        'SlimFastAPI\\Route' => __DIR__ . '/../..' . '/base/route.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitaf4e9d1cbccea3eaaa580d86f123f2fa::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitaf4e9d1cbccea3eaaa580d86f123f2fa::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitaf4e9d1cbccea3eaaa580d86f123f2fa::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitaf4e9d1cbccea3eaaa580d86f123f2fa::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc05afe9956509391a375a9d2d8f266cc::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc05afe9956509391a375a9d2d8f266cc::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc05afe9956509391a375a9d2d8f266cc::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitc05afe9956509391a375a9d2d8f266cc::$classMap;
 
         }, null, ClassLoader::class);
     }
