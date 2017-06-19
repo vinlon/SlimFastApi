@@ -6,7 +6,12 @@
 /**
  * DEBUG开关
  */
-define('DEBUG', true);
+define('DEBUG', false);
+
+/**
+ * ERROR_HANDLER_API
+ */
+define('ERROR_HANDLER_API', 'http://192.168.10.50:10006/error/phpHandler');
 
 /**
  * MySQL服务器地址

@@ -9,6 +9,11 @@
 define('DEBUG', true);
 
 /**
+ * ERROR_HANDLER_API
+ */
+define('ERROR_HANDLER_API', 'http://192.168.2.213:10006/error/phpHandler');
+
+/**
  * MySQL服务器地址
  */
 define('DBHOST', 'mysql');

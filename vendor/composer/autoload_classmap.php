@@ -14,7 +14,6 @@ return array(
     'Model\\AppModel' => $baseDir . '/app/model/m_app.php',
     'Model\\Demo' => $baseDir . '/app/model/m_demo.php',
     'Service\\AppService' => $baseDir . '/app/service/s_app.php',
-    'Service\\AuthService' => $baseDir . '/app/service/s_auth.php',
     'Service\\IpService' => $baseDir . '/app/service/s_ip.php',
     'SlimFastAPI\\Base' => $baseDir . '/base/b_base.php',
     'SlimFastAPI\\BaseController' => $baseDir . '/base/b_controller.php',

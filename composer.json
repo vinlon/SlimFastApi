@@ -16,8 +16,6 @@
             "app/service"
 		],
 		"files": [
-			"base/config.php",
-			
 			"app/config.php"
 		]
 	}

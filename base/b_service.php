@@ -24,12 +24,14 @@ class BaseService extends Base{
      * @param array $data 请求数据
      * @param array $headers 请求头数据
      */
-    public function httpGet($url, $data, $headers = [], $timeout_ms = 3000){
+    public function httpGet($url, $data, $headers = [], $timeout_ms = null){
         $curl = new Curl();
          foreach ($headers as $key => $value) {
             $curl->setHeader($key, $value);
         }
-        $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        if($timeout_ms){
+            $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        }
         $curl->get($url, $data);
         $curl->close();
         if($curl->error){
@@ -45,12 +47,14 @@ class BaseService extends Base{
      * @param array $data 请求数据
      * @param array $headers 请求头数据
      */
-    public function httpPost($url, $data, $headers = [], $timeout_ms = 3000){
+    public function httpPost($url, $data, $headers = [], $timeout_ms = null){
         $curl = new Curl();
         foreach ($headers as $key => $value) {
             $curl->setHeader($key, $value);
         }
-        $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        if($timeout_ms){
+            $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        }
         
         $curl->post($url, $data);
         $curl->close();
@@ -67,13 +71,15 @@ class BaseService extends Base{
      * @param array $data 请求数据
      * @param array $headers 请求头数据
      */
-    public function httpPostJson($url, $data, $headers = [], $timeout_ms = 3000){
+    public function httpPostJson($url, $data, $headers = [], $timeout_ms = null){
         $curl = new Curl();
         foreach ($headers as $key => $value) {
             $curl->setHeader($key, $value);
         }
         $curl->setHeader("Content-type", "application/json");
-        $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        if($timeout_ms){
+            $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        }
         
         //数组转化成JSON字符串
         if(is_array($data)){
@@ -95,12 +101,14 @@ class BaseService extends Base{
      * @param array $data 请求数据
      * @param array $headers 请求头数据
      */
-    public function httpPut($url, $data, $headers = [], $timeout_ms = 3000){
+    public function httpPut($url, $data, $headers = [], $timeout_ms = null){
         $curl = new Curl();
         foreach ($headers as $key => $value) {
             $curl->setHeader($key, $value);
         }
-        $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        if($timeout_ms){
+            $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        }
         
         $curl->put($url, $data);
         $curl->close();
@@ -116,12 +124,14 @@ class BaseService extends Base{
      * @param array $data 请求数据
      * @param array $headers 请求头数据
      */
-    public function httpDelete($url, $data, $headers = [], $timeout_ms = 3000){
+    public function httpDelete($url, $data, $headers = [], $timeout_ms = null){
         $curl = new Curl();
         foreach ($headers as $key => $value) {
             $curl->setHeader($key, $value);
         }
-        $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        if($timeout_ms){
+            $curl->setOpt(CURLOPT_CONNECTTIMEOUT_MS, $timeout_ms);
+        }
         
         $curl->delete($url, $data);
         $curl->close();

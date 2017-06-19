@@ -31,68 +31,102 @@ class GlobalError{
     const CURL_ERR_CODE = 400;
     
     /**
+     * 页面未找到
+     */
+    const PAGE_NOT_FOUND = 404;
+    
+    /**
+     * 请求方法错误
+     */
+    const METHOD_NOT_ALLOWED = 405;
+    
+    /**
      * MYSLQ服务器异常代码
      */
     const MYSQL_ERR_CODE = 500;
 
-    /**
-     * 页面未找到
-     */
-    const PAGE_NOT_FOUND = [404, '页面未找到', 'PAGE_NOT_FOUND'];
 
     /**
-     * 请求方式不允许
+     * 获取错误详细信息
+     * @param  integer $err_code            异常代码
+     * @return array [HTTP返回码, 自定义错误信息]
+     * @author liwenlong
      */
-    const METHOD_NOT_ALLOWED = [405, '请求方法错误', 'METHOD_NOT_ALLOWED'];
+    public static function getCustomError($err_code){
+        $http_response_code = 500;
+        //根据不同的异常状态码及HTTP返回码定义错误信息
+        $custom_msg = [];
+
+        switch ($err_code) {
+            //HTTP返回码和异常代码相同
+            case self::PAGE_NOT_FOUND:
+                $http_response_code = self::PAGE_NOT_FOUND;
+                $custom_msg = ['页面未找到', 'PAGE_NOT_FOUND'];
+                break;
+            case self::METHOD_NOT_ALLOWED:
+                $http_response_code = self::METHOD_NOT_ALLOWED;
+                $custom_msg = ['请求方法错误', 'METHOD_NOT_ALLOWED'];
+                break;
+
+            //HTTP返回码使用200
+            case self::AUTH_ERR_CODE:
+                $http_response_code = 200;
+                $custom_msg = ['身份认证失败', 'AUTH_FAILED'];
+                break;
+
+            //使用默认HTTP返回码
+            case self::PARAM_ERR_CODE:
+                $custom_msg = ['参数错误', 'PARAM_ERROR'];
+                break;
+            case E_ERROR:
+                $custom_msg = ['运行时错误', 'E_ERROR'];
+                break;
+            case E_WARNING:
+                $custom_msg = ['运行时警告', 'E_WARNING'];
+                break;
+            case E_PARSE:
+                $custom_msg = ['编译错误', 'E_PARSE'];
+                break;
+            case E_NOTICE:
+                $custom_msg = ['运行时通知', 'E_NOTICE'];
+                break;
+            case self::REDIS_ERR_CODE:
+                $custom_msg = ['REDIS错误', 'REDIS_ERROR'];
+                break;
+            case self::CURL_ERR_CODE:
+                $custom_msg = ['CURL错误', 'CURL_ERROR'];
+                break;
+            case self::MYSQL_ERR_CODE:
+                $custom_msg = ['MYSQL错误', 'MYSQL_ERROR'];
+                break;
+            
+            default:
+                $custom_msg = ["其它异常{$err_code}", 'E_OTHER'];
+                break;
+        }
+
+        //返回HTTP状态码和自定义错误信息
+        array_unshift($custom_msg, self::getCustomCode($http_response_code, $err_code));
+        return [
+            'http_response_code' => $http_response_code,
+            'custom_msg' => $custom_msg
+        ];
+    }
 
     /**
-     * 运行时错误
+     * 获取自定义错误码
+     * @author liwenlong
      */
-    const E_ERROR = [20001, '运行时错误', 'E_ERROR'];
-
-    /**
-     * 运行时警告
-     */
-    const E_WARNING = [20002, '运行时警告', 'E_WARNING'];
-
-    /**
-     * 编译错误
-     */
-    const E_PARSE = [20004, '编译错误', 'E_PARSE'];
-
-    /**
-     * 运行时通知
-     */
-    const E_NOTICE = [20008, '运行时通知', 'E_NOTICE'];
-
-    /**
-     * 其它异常
-     */
-    const E_OTHER = [20010, '其它异常', 'E_OTHER'];
-
-    /**
-     * 身份认证失败
-     */
-    const AUTHENTICATION_FAIL = [20100, '身份认证失败', 'AUTH_FAILED'];
-
-    /**
-     * 参数错误
-     */
-    const PARAM_ERROR = [20200, '参数错误', 'PARAM_ERROR'];
-
-    /**
-     * REDIS错误
-     */
-    const REDIS_ERROR = [20300, 'REDIS错误', 'REDIS_ERROR'];
-
-    /**
-     * CURL错误
-     */
-    const CURL_ERROR = [20400, 'CURL错误', 'CURL_ERROR'];
-
-    /**
-     * MYSQL错误
-     */
-    const MYSQL_ERROR = [20500, 'MYSQL错误', 'MYSQL_ERROR'];
+    private static function getCustomCode($http_response_code, $err_code){
+        switch ($err_code) {
+            case self::PAGE_NOT_FOUND:
+            case self::METHOD_NOT_ALLOWED:
+                return $err_code;
+                break;
+            default:
+                return $http_response_code * 100 + $err_code;
+                break;
+        }
+    }
 }
 

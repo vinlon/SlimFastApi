@@ -26,20 +26,25 @@ unset($c['errorHandler']);
 //页面未找到
 $c['notFoundHandler'] = function ($c) {
     return function ($request, $response) use ($c) {
+        $custom_error = GlobalError::getCustomError(GlobalError::PAGE_NOT_FOUND);
+        $response_code = $custom_error['http_response_code'];
+        $custom_msg = $custom_error['custom_msg'];
         $controller = new BaseController();
-        $result = $result = $controller->returnArray(GlobalError::PAGE_NOT_FOUND);
         return $c['response']
-            ->withJson($result,404);
+            ->withJson($controller->returnArray($custom_msg), $response_code);
     };
 };
 //请求类型不正确
 $c['notAllowedHandler'] = function ($c) {
     return function ($request, $response, $methods) use ($c) {
+        $custom_error = GlobalError::getCustomError(GlobalError::METHOD_NOT_ALLOWED);
+        $response_code = $custom_error['http_response_code'];
+        $custom_msg = $custom_error['custom_msg'];
+
         $controller = new BaseController();
-        $result = $controller->returnArray(GlobalError::METHOD_NOT_ALLOWED);
         return $c['response']
             ->withHeader('Allow', implode(', ', $methods))
-            ->withJson($result, 405);
+            ->withJson($controller->returnArray($custom_msg), $response_code);
     };
 };
 

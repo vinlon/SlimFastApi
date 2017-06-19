@@ -62,67 +62,36 @@ register_shutdown_function(function(){
  */
 function handleError($error_code, $error_message, $error_file, $error_line, $trace, $source){
     $controller = new BaseController();
+    // var_dump(func_get_args());
     //注：如果Base, GlobalError, BaseController或BaseService出现错误，则该方法无法正常使用，该方法内出现的异常无法进行捕获和处理
-    //HTTP状态码使用500
-    $response_code = 500;
-    
-    //Error Code转义
-    switch($error_code)
-    {
-        case GlobalError::AUTH_ERR_CODE :
-            $custom_error = GlobalError::AUTHENTICATION_FAIL;
-            break;
-        case GlobalError::PARAM_ERR_CODE :
-            $custom_error = GlobalError::PARAM_ERROR;
-            break;
+    $custom_error = GlobalError::getCustomError($error_code);
+    $response_code = $custom_error['http_response_code'];
+    $custom_msg = $custom_error['custom_msg'];
 
-        case E_ERROR: 
-            $custom_error = GlobalError::E_ERROR;
-            break;
-        case E_WARNING: 
-            $custom_error = GlobalError::E_WARNING;
-            break;
-        case E_PARSE: 
-            $custom_error = GlobalError::E_PARSE;
-            break;
-        case E_NOTICE: 
-            $custom_error = GlobalError::E_WARNING;
-            break;
-
-        case GlobalError::REDIS_ERR_CODE : 
-            $custom_error = GlobalError::REDIS_ERROR;
-            break;
-        case GlobalError::CURL_ERR_CODE :
-            $custom_error = GlobalError::CURL_ERROR;
-            break;
-        case GlobalError::MYSQL_ERR_CODE : 
-            $custom_error = GlobalError::MYSQL_ERROR;
-            break;
-
-        default :
-            $custom_error = GlobalError::E_OTHER;
-            break;
-    }
-    
     if($response_code === 500){
+        $error_data = [
+            'custom_code' => $error_code,
+            'error_message' => $error_message,
+            'error_file' => $error_file,
+            'error_line' => $error_line,
+            'source' => $source,
+            'client_ip' => $controller->getClientIp(),
+            'server_ip' => $controller->getServerIp(),
+            'trace' => $trace
+        ];
         if(!defined('DEBUG') || DEBUG){
-            $result = $controller->returnArray($custom_error, [
-                'custom_code' => $error_code,
-                'error_message' => $error_message,
-                'error_file' => $error_file,
-                'error_line' => $error_line,
-                'source' => $source,
-                'client_ip' => $controller->getClientIp(),
-                'server_ip' => $controller->getServerIp(),
-                'trace' => $trace
-            ]);
+            $result = $controller->returnArray($custom_msg, $error_data);
+        }else if(!defined('ERROR_HANDLER_API')){
+            //错误信息记录到日志
+            $controller->addInfo($controller->isoDateTime() . "\t" . json_encode($error_data), 'error_handle');
+            $result = $controller->returnArray($custom_msg, ['error log is written to ~/log/error_handle']);
         }else{
             //非调试模式下调用错误处理接口
             $error = [
                 'project_name' => defined('PROJECT_NAME') ? PROJECT_NAME : 'UNDEFINED',
                 'project_version' => defined('PROJECT_VERSION') ? PROJECT_VERSION : 'UNDEFINED',
                 'project_owner' => defined('PROJECT_OWNER') ? PROJECT_OWNER : 'UNDEFINED',
-                'error_type' => $custom_error[2],
+                'error_type' => $custom_msg[2],
                 'error_message' => $error_message,
                 'error_file' => $error_file,
                 'error_line' => $error_line,
@@ -134,10 +103,16 @@ function handleError($error_code, $error_message, $error_file, $error_line, $tra
 
             $error_code = errorLog($error);
 
-            $result = $controller->returnArray($custom_error, ['error_code' => $error_code]);
+            //日志记录失败将错误信息记录到本地
+            if($error_code == 'ERROR_LOG_FAILED'){
+                $controller->addInfo($controller->isoDateTime() . "\t" . json_encode($error_data), 'error_handle');
+                $result = $controller->returnArray($custom_msg, ['error log is written to ~/log/error_handle']);
+            }else{
+                $result = $controller->returnArray($custom_msg, ['error_code' => $error_code]);
+            }
         }
     }else{
-        $result = $controller->returnArray($return_code, $error_message);
+        $result = $controller->returnArray($custom_msg);
     }
     http_response_code($response_code);
     echo json_encode($result, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);

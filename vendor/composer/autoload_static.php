@@ -8,7 +8,6 @@ class ComposerStaticInitc05afe9956509391a375a9d2d8f266cc
 {
     public static $files = array (
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
-        '778a87887745c593c28cbb502d34e6cf' => __DIR__ . '/../..' . '/base/config.php',
         '5a53be654e4f73848e0e2e995493897f' => __DIR__ . '/../..' . '/app/config.php',
     );
 
@@ -102,7 +101,6 @@ class ComposerStaticInitc05afe9956509391a375a9d2d8f266cc
         'Model\\AppModel' => __DIR__ . '/../..' . '/app/model/m_app.php',
         'Model\\Demo' => __DIR__ . '/../..' . '/app/model/m_demo.php',
         'Service\\AppService' => __DIR__ . '/../..' . '/app/service/s_app.php',
-        'Service\\AuthService' => __DIR__ . '/../..' . '/app/service/s_auth.php',
         'Service\\IpService' => __DIR__ . '/../..' . '/app/service/s_ip.php',
         'SlimFastAPI\\Base' => __DIR__ . '/../..' . '/base/b_base.php',
         'SlimFastAPI\\BaseController' => __DIR__ . '/../..' . '/base/b_controller.php',
